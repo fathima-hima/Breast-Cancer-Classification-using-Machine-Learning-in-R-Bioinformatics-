@@ -201,4 +201,29 @@ ggsave(
 
 cat("\nSVM Model Evaluation Completed Successfully!\n")
 
+# Save model performance metrics
+performance_results <- data.frame(
+  Metric = c(
+    "Accuracy",
+    "Precision",
+    "Recall",
+    "Specificity",
+    "F1-Score",
+    "AUC"
+  ),
+  Value = c(
+    as.numeric(accuracy),
+    as.numeric(precision),
+    as.numeric(recall),
+    as.numeric(specificity),
+    as.numeric(f1_score),
+    as.numeric(auc_value)
+  )
+)
+
+write.csv(
+  performance_results,
+  "figures/svm_performance_metrics.csv",
+  row.names = FALSE
+)
 
